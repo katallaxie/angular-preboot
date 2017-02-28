@@ -1,8 +1,8 @@
-[![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://github.com/mgechev/angular2-style-guide)
+[![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://github.com/mgechev/angular2-style-guide)
 [![Taylor Swift](https://img.shields.io/badge/secured%20by-taylor%20swift-brightgreen.svg)](https://twitter.com/SwiftOnSecurity)
 [![Volkswagen](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
-[![Build Status](https://travis-ci.org/katallaxie/angular2-preboot.svg?branch=master)](https://travis-ci.org/katallaxie/angular2-preboot)
-[![Greenkeeper badge](https://badges.greenkeeper.io/katallaxie/angular2-preboot.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/katallaxie/angular-preboot.svg?branch=master)](https://travis-ci.org/katallaxie/angular-preboot)
+[![Greenkeeper badge](https://badges.greenkeeper.io/katallaxie/angular-preboot.svg)](https://greenkeeper.io/)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/katallaxie/katallaxie)
 
@@ -37,10 +37,10 @@
 ```
 # clone the repo
 # --depth 1 removes all but one .git commit history
-git clone --depth 1 https://github.com/katallaxie/angular2-preboot.git
+git clone --depth 1 https://github.com/katallaxie/angular-preboot.git
 
 # change to repo folder
-cd angular2-preboot
+cd angular-preboot
 
 # install the repo with npm, or yarn
 npm install
@@ -53,34 +53,6 @@ npm start
 ```
 
 > You can run `npm run help` to see all available scripts
-
-Open [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http://localhost:3000) in your favorite Browser.
-
-## Preboot Generator
-
-> We have a [Yeoman](http://yeoman.io/generators/) in place that has your back.
-
-### Install Yo and the Preboot Generator
-```
-npm i yo generator-angular2-preboot -g
-  
-```
-
-### Setup a fresh Angular 2 project with the Preboot Generator
-
-```
-mkdir my-new-app && cd $_
-```
-
-```
-yo angular2-preboot
-```
-
-### Start with your great project
-
-```
-npm start
-```
 
 Open [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http://localhost:3000) in your favorite Browser.
 
