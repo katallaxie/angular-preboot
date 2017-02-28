@@ -1,5 +1,5 @@
 /*
- * Angular 2 decorators and services
+ * Angular decorators and services
  */
 import { ViewEncapsulation } from '@angular/core';
 import { OnInit } from '@angular/core';
@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  public name = 'Angular 2 Preboot';
+  public name = 'Angular Preboot';
   public logo = '/img/angular.png';
 
   public ngOnInit() {

@@ -29,8 +29,8 @@ describe(`App`, () => {
     fixture.detectChanges(); // trigger initial data binding
   });
 
-  it(`should have the title 'Angular 2 Preboot'`, () => {
-    expect(comp.name).toEqual('Angular 2 Preboot');
+  it(`should have the title 'Angular Preboot'`, () => {
+    expect(comp.name).toEqual('Angular Preboot');
   });
 
   it(`should have the @Angular logo`, () => {

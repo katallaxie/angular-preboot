@@ -6,9 +6,9 @@
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/katallaxie/katallaxie)
 
-# Angular 2.x Preboot
+# Angular Preboot
 
-> An [Angular 2](https://angular.io) boilerplate, that has a lot of features and is driven by great spirit.
+> An [Angular](https://angular.io) boilerplate, that has a lot of features and is driven by great spirit.
 
 ## Features
 
