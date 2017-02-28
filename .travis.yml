@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - "6"
+  - "node"
+services:
+  - docker
+before_install:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - npm i npm@^4 -g
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3
+script:
+  - npm test
+  - npm run build:dev
+  - npm run build:prod
+  - npm run e2e
+cache:
+  directories:
+    - node_modules
+sudo: required

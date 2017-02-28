@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title><%= htmlWebpackPlugin.options.title %></title>
+
+  <% if (webpackConfig.htmlElements.headTags) { %>
+  <!-- Configured Head Tags  -->
+  <%= webpackConfig.htmlElements.headTags %>
+  <% } %>
+
+  <!-- base url -->
+  <base href="/">
+
+  <% if (__DEV__) { %>
+  <!-- Webpack Dev Server reload -->
+  <script src="/polyfills.dll.js" defer></script>
+  <script src="/vendor.dll.js" defer></script>
+  <script src="/rxjs.dll.js" defer></script>
+  <% } %>
+
+</head>
+
+<body>
+
+  <my-app>
+    Booting...
+  </my-app>
+
+</body>
+</html>
