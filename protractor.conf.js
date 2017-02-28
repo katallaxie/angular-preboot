@@ -36,9 +36,9 @@ exports.config = {
   },
 
   /**
-   * Angular 2 configuration
+   * Angular configuration
    *
-   * useAllAngular2AppRoots: tells Protractor to wait for any angular2 apps on the page instead of just the one matching
+   * useAllAngular2AppRoots: tells Protractor to wait for any Angular apps on the page instead of just the one matching
    * `rootEl`
    */
    useAllAngular2AppRoots: true
