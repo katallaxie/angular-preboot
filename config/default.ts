@@ -43,7 +43,12 @@ export const loader: DefaultLoaders = {
   tsLintLoader: {
     enforce: 'pre',
     test: /\.ts$/,
-    use: ['tslint-loader']
+    use: [{
+      loader: 'tslint-loader',
+      options: {
+        typeCheck: true
+      }
+    }]
   },
   sourceMapLoader: {
     test: /\.js$/,
@@ -89,7 +94,7 @@ export const loader: DefaultLoaders = {
   }
 };
 
-export const DefaultCommonConfig = ({isDev}): DefaultConfig => {
+export const DefaultCommonConfig = ({ isDev }): DefaultConfig => {
   return {
     rules: [
       loader.cssLoader,
@@ -106,7 +111,7 @@ export const DefaultCommonConfig = ({isDev}): DefaultConfig => {
       }),
       new NamedModulesPlugin(),
       new ContextReplacementPlugin(
-        /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
+        /angular(\\|\/)core(\\|\/)angular/,
         root(`src`)
       ),
       new HtmlHeadElementsPlugin({
@@ -117,7 +122,7 @@ export const DefaultCommonConfig = ({isDev}): DefaultConfig => {
   }
 };
 
-export const DefaultDevConfig = ({isAoT}): DefaultConfig => {
+export const DefaultDevConfig = ({ isAoT }): DefaultConfig => {
   return {
     rules: [
       loader.tsLintLoader,
@@ -149,7 +154,7 @@ export const DefaultDevConfig = ({isAoT}): DefaultConfig => {
   }
 };
 
-export const DefaultProdConfig = ({isAoT}): DefaultConfig => {
+export const DefaultProdConfig = ({ isAoT }): DefaultConfig => {
   return {
     rules: [
       loader.tsLoader(isAoT),
