@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
  */
 // App is our top level component
 import { AppComponent } from './app.component';
-import { ROUTES } from './app.routes';
+import { ROUTES as APP_ROUTES } from './app.routes';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -30,7 +30,7 @@ const APP_PROVIDERS = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, {
+    RouterModule.forRoot(APP_ROUTES, {
       useHash: true,
       enableTracing: !__PROD__
     }),

@@ -14,10 +14,9 @@ export let decorateModuleRef = <T>(value: T): T => { return value; };
 if (__PROD__) {
   enableProdMode();
 
-  // Production
+  // enable production
   decorateModuleRef = (modRef: any) => {
     disableDebugTools();
-
     return modRef;
   };
 
@@ -27,10 +26,8 @@ if (__PROD__) {
     const appRef = modRef.injector.get(ApplicationRef);
     const cmpRef = appRef.components[0];
 
-    let _ng = (<any> window).ng;
+    // enable debug tools
     enableDebugTools(cmpRef); // try ng.profiler.timeChangeDetection()
-    (<any> window).ng.probe = _ng.probe;
-    (<any> window).ng.coreTokens = _ng.coreTokens;
     return modRef;
   };
 
@@ -41,7 +38,7 @@ export function bootstrapDomReady(main): void {
   document.addEventListener('DOMContentLoaded', () => main());
 };
 
-export function bootstrapDomLoading (main): void {
+export function bootstrapDomLoading(main): void {
   switch (document.readyState) {
     case 'loading':
       bootstrapDomReady(main);

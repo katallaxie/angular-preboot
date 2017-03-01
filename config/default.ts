@@ -111,7 +111,7 @@ export const DefaultCommonConfig = ({ isDev }): DefaultConfig => {
       }),
       new NamedModulesPlugin(),
       new ContextReplacementPlugin(
-        /angular(\\|\/)core(\\|\/)angular/,
+        /angular(\\|\/)core(\\|\/)@angular/,
         root(`src`)
       ),
       new HtmlHeadElementsPlugin({
