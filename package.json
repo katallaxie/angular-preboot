@@ -146,7 +146,7 @@
     "url-loader": "^0.5.7",
     "webpack": "2.2.1",
     "webpack-dev-middleware": "^1.10.0",
-    "webpack-dev-server": "2.4.1",
+    "webpack-dev-server": "2.4.2",
     "webpack-merge": "^4.0.0"
   },
   "repository": {
