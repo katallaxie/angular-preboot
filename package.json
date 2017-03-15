@@ -118,7 +118,7 @@
     "karma-mocha-reporter": "^2.2.1",
     "karma-remap-coverage": "^0.1.1",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^2.0.1",
+    "karma-webpack": "^2.0.3",
     "ng-router-loader": "^2.0.0",
     "ngc-webpack": "^1.2.0",
     "npm-run-all": "^4.0.1",
