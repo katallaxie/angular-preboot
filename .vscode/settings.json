@@ -1,5 +1,6 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib/",
   "tslint.exclude": "**/config/**/*.ts",
-  "tslint.rulesDirectory": "./node_modules/codelyzer"
+"tslint.rulesDirectory": "./node_modules/codelyzer",
+"vsicons.presets.angular": true
 }
