@@ -99,7 +99,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^3.2.3",
     "cross-spawn": "^5.0.1",
-    "css-loader": "^0.27.3",
+    "css-loader": "^0.28.0",
     "cssnano": "^3.10.0",
     "exports-loader": "^0.6.3",
     "expose-loader": "^0.7.3",
