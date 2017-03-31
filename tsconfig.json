@@ -21,7 +21,7 @@
     ],
     "types": [
       "hammerjs",
-      "jasmine",
+      "jest",
       "node",
       "selenium-webdriver",
       "source-map",

@@ -21,7 +21,7 @@
 * [PostCss](https://github.com/postcss/postcss) + [Autoprefixer](https://github.com/postcss/autoprefixer)
 * [Codelyzer](https://github.com/mgechev/codelyzer)
 * [Istanbul](https://github.com/gotwarlost/istanbul)
-* [Karma](https://karma-runner.github.io/)
+* [Jest](https://facebook.github.io/jest)
 * [Protractor](https://angular.github.io/protractor/)
 * [Jasmine](https://github.com/jasmine/jasmine)
 * [E2E](https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-)
@@ -70,7 +70,7 @@ npm run build:docker
 
 ### Testing is import for quality products
 
-> We have [Karma](https://karma-runner.github.io/) and [Protractor](http://www.protractortest.org/) in place
+> We have [Jest](https://facebook.github.io/jest) and [Protractor](http://www.protractortest.org/) in place
 
 ```
 # run your unit tests
