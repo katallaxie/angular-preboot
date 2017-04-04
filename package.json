@@ -112,7 +112,7 @@
     "istanbul-instrumenter-loader": "^2.0.0",
     "jasmine-core": "^2.5.2",
     "jest": "^19.0.2",
-    "jest-preset-angular": "0.0.7",
+    "jest-preset-angular": "0.0.8",
     "json-loader": "^0.5.4",
     "ng-router-loader": "^2.0.0",
     "ngc-webpack": "^1.2.0",
