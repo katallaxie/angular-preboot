@@ -13,13 +13,7 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./app.component.css'],
-  template: `
-    <div class="welcome">
-      <img [src]="logo">
-
-      <h1>Welcome, and have fun with Angular.</h1>
-    </div>
-  `
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
 
