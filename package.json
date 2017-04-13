@@ -1,6 +1,6 @@
 {
   "name": "angular-preboot",
-  "version": "4.0.0",
+  "version": "4.0.2",
   "description": "A teeny tiny Angular template to get your next great project booted. It is powered by great ideas and Webpack 2.",
   "keywords": [
     "angular",
