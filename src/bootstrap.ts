@@ -9,7 +9,7 @@ import {
 
 // Angular debug tools in the dev console
 // https://github.com/angular/angular/blob/master/TOOLS.md
-export let decorateModuleRef = <T>(value: T): T => { return value; };
+export let decorateModuleRef = <T>(value: T): T => value;
 
 if (__PROD__) {
   enableProdMode();
@@ -36,7 +36,7 @@ if (__PROD__) {
 // dom operations
 export function bootstrapDomReady(main): void {
   document.addEventListener('DOMContentLoaded', () => main());
-};
+}
 
 export function bootstrapDomLoading(main): void {
   switch (document.readyState) {
@@ -48,4 +48,4 @@ export function bootstrapDomLoading(main): void {
     default:
       main();
   }
-};
+}
