@@ -15,11 +15,12 @@ import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 
 // optimization
+import * as BrotliPlugin from 'brotli-webpack-plugin';
 import * as CommonsChunkPlugin from 'webpack/lib/optimize/CommonsChunkPlugin';
 import * as CompressionPlugin from 'compression-webpack-plugin';
 import * as NamedModulesPlugin from 'webpack/lib/NamedModulesPlugin';
-import * as UglifyJsPlugin from 'webpack/lib/optimize/UglifyJsPlugin';
 import * as OptimizeJsPlugin from 'optimize-js-plugin';
+import * as UglifyJsPlugin from 'webpack/lib/optimize/UglifyJsPlugin';
 
 import {
   CustomHeadTags,
@@ -162,6 +163,12 @@ export const DefaultProdConfig = ({ isAoT }): DefaultConfig => {
     plugins: [
       new OptimizeJsPlugin({
         sourceMap: false
+      }),
+      new BrotliPlugin({
+        asset: '[path].br[query]',
+			  test: /\.(js|css|html|svg)$/,
+			  threshold: 10240,
+			  minRatio: 0.8
       }),
       // new NoEmitOnErrorsPlugin(), // quality
       // This enables tree shaking of the vendor modules

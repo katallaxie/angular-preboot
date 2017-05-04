@@ -36,7 +36,7 @@
   ],
   "awesomeTypescriptLoaderOptions": {
     "useBabel": true,
-    "useCache": false,
+    "useCache": true,
     "emitRequireType": false,
     "useWebpackText": true,
     "forkChecker": true
