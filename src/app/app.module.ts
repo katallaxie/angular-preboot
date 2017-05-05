@@ -32,7 +32,7 @@ const APP_PROVIDERS = [
     HttpModule,
     RouterModule.forRoot(APP_ROUTES, {
       useHash: true,
-      enableTracing: !__PROD__
+      enableTracing: __DEV__
     }),
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

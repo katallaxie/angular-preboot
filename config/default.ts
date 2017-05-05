@@ -206,7 +206,9 @@ export const DefaultProdConfig = ({ isAoT }): DefaultConfig => {
       }),
       new UglifyJsPlugin({
         beautify: false,
-        comments: false,
+        output: {
+          comments: false
+        },
         compress: {
           comparisons: true,
           conditionals: true,
@@ -222,8 +224,7 @@ export const DefaultProdConfig = ({ isAoT }): DefaultConfig => {
           warnings: false
         },
         mangle: {
-          screw_ie8: true,
-          keep_fnames: true,
+          screw_ie8: true
         }
       }),
     ]

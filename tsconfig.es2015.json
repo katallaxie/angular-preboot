@@ -35,7 +35,7 @@
   ],
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,
-    "useWebpackText": true
+    "useWebpackText": false
   },
   "angularCompilerOptions": {
     "genDir": "./aot",
