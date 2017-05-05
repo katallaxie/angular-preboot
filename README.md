@@ -58,6 +58,7 @@ Open [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http:
 
 ### Build and deploy your great project
 
+> We have `npm run fmt` with `.clang-format` in place to format your code
 > We have a [Firebase](https://firebase.google.com/) config in the repo
 
 ```
