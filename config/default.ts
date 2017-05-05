@@ -110,7 +110,6 @@ export const DefaultCommonConfig = ({ isDev }): DefaultConfig => {
         __DEV__: isDev,
         __PROD__: !isDev
       }),
-      new NamedModulesPlugin(),
       new ContextReplacementPlugin(
         /angular(\\|\/)core(\\|\/)@angular/,
         root(`src`)
@@ -143,6 +142,7 @@ export const DefaultDevConfig = ({ isAoT }): DefaultConfig => {
         template: 'src/index.html',
         title: CustomHeadTags.title
       }),
+      new NamedModulesPlugin(),
       new CopyWebpackPlugin([
         ...DefaultCopyFolders,
         ...CustomCopyFolders,

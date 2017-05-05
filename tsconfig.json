@@ -38,7 +38,7 @@
     "useBabel": true,
     "useCache": true,
     "emitRequireType": false,
-    "useWebpackText": true,
+    "useWebpackText": false,
     "forkChecker": true
   },
   "angularCompilerOptions": {

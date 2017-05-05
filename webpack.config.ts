@@ -67,7 +67,7 @@ if (!envConfig.isDll && envConfig.isDev) {
 
 // common
 const commonConfig = () => {
-  const config: WebpackConfig = <WebpackConfig> {};
+  const config: WebpackConfig = {} as WebpackConfig;
 
   config.module = {
     rules: [
@@ -98,7 +98,7 @@ const commonConfig = () => {
 
 // dev
 const devConfig = () => {
-  const config: WebpackConfig = <WebpackConfig> {};
+  const config: WebpackConfig = {} as WebpackConfig;
 
   config.devtool = 'eval-source-map';
 
@@ -146,7 +146,7 @@ const devConfig = () => {
 // dll
 const dllConfig = () => {
 
-  const config: WebpackConfig = <WebpackConfig> {};
+  const config: WebpackConfig = {} as WebpackConfig;
 
   config.entry = {
     polyfills: polyfills(envConfig.isDev),
@@ -172,7 +172,7 @@ const dllConfig = () => {
 // prod
 const prodConfig = () => {
 
-  const config: WebpackConfig = <WebpackConfig> {};
+  const config: WebpackConfig = {} as WebpackConfig;
 
   config.devtool = 'source-map';
 
@@ -219,7 +219,7 @@ const prodConfig = () => {
 
 // default
 const defaultConfig = () => {
-  const config: WebpackConfig = <WebpackConfig> {};
+  const config: WebpackConfig = {} as WebpackConfig;
 
   config.resolve = {
     extensions: ['.ts', '.js', '.json'],
