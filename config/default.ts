@@ -22,6 +22,10 @@ import * as NamedModulesPlugin from 'webpack/lib/NamedModulesPlugin';
 import * as OptimizeJsPlugin from 'optimize-js-plugin';
 import * as UglifyJsPlugin from 'webpack/lib/optimize/UglifyJsPlugin';
 
+// postCss
+import * as Autoprefixer from 'autoprefixer';
+import * as CssNano from 'cssnano';
+
 import {
   CustomHeadTags,
   CustomCopyFolders,
@@ -82,7 +86,15 @@ export const loader: DefaultLoaders = {
     use: [
       'to-string-loader',
       'css-loader',
-      'postcss-loader'
+      {
+        loader: 'postcss-loader',
+        options: {
+          plugins: () => [
+            Autoprefixer(),
+            CssNano(),
+          ]
+        }
+      }
     ],
   }, htmlLoader: {
     test: /\.html$/,

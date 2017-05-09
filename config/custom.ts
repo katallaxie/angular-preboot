@@ -13,32 +13,15 @@
  *
  */
 
-// webpack
-import { LoaderOptionsPlugin } from 'webpack';
-
 // vendor
-import * as Autoprefixer from 'autoprefixer';
-import * as CssNano from 'cssnano';
 import * as PreloadWebpackPlugin from 'preload-webpack-plugin';
 
 // common
 export const CustomCommonConfig: CustomConfig = {
   plugins: [
-    // it is highly recommended to autoprefix and minify your CSS
-    new LoaderOptionsPlugin({
-      options: {
-        postcss: () => {
-          return [
-            Autoprefixer,
-            CssNano,
-          ];
-        },
-      },
-    }),
     new PreloadWebpackPlugin()
   ],
   rules: [
-
   ]
 };
 
