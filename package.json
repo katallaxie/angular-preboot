@@ -147,7 +147,7 @@
   },
   "jest": {
     "globals": {
-      "__TS_CONFIG__": "<rootDir>/tsconfig.json"
+      "__TS_CONFIG__": "tsconfig.json"
     },
     "preset": "jest-preset-angular",
     "transform": {
