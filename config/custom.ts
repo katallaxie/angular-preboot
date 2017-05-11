@@ -15,6 +15,7 @@
 
 // vendor
 import * as PreloadWebpackPlugin from 'preload-webpack-plugin';
+import * as OfflinePlugin from 'offline-plugin';
 
 // common
 export const CustomCommonConfig: CustomConfig = {
@@ -38,7 +39,7 @@ export const CustomDevConfig: CustomConfig = {
 // production
 export const CustomProdConfig: CustomConfig = {
   plugins: [
-
+    new OfflinePlugin()
   ],
   rules: [
 

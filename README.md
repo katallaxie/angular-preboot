@@ -26,6 +26,7 @@
 * [Jasmine](https://github.com/jasmine/jasmine)
 * [E2E](https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-)
 * [Docker](https://docker.io)
+* [Lighthouse](https://github.com/GoogleChrome/lighthouse)
 
 ## Quick Start
 

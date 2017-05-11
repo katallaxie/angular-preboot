@@ -1,5 +1,6 @@
 import {ApplicationRef, enableProdMode} from '@angular/core';
 import {disableDebugTools, enableDebugTools} from '@angular/platform-browser';
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 
 // Angular debug tools in the dev console
 // https://github.com/angular/angular/blob/master/TOOLS.md
@@ -7,6 +8,9 @@ export let decorateModuleRef = <T>(value: T): T => value;
 
 if (__PROD__) {
   enableProdMode();
+
+  // ofline
+  OfflinePluginRuntime.install();
 
   // enable production
   decorateModuleRef = (modRef: any) => {
