@@ -117,7 +117,7 @@
     "jest": "^20.0.0",
     "jest-preset-angular": "^2.0.2",
     "json-loader": "^0.5.4",
-    "lighthouse": "^1.6.5",
+    "lighthouse": "^2.0.0",
     "ng-router-loader": "^2.0.0",
     "ngc-webpack": "^2.0.0",
     "npm-run-all": "^4.0.1",
