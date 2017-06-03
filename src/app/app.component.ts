@@ -1,9 +1,9 @@
 /*
  * Angular decorators and services
  */
-import {ViewEncapsulation} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {Component} from '@angular/core';
+import { ViewEncapsulation } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 /*
  * App Component

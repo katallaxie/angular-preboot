@@ -1,7 +1,6 @@
-import {browser, by, element} from 'protractor';
+import { browser, by, element } from 'protractor';
 
 describe('App', () => {
-
   beforeEach(() => {
     browser.get('/');
     browser.waitForAngular();
@@ -18,5 +17,4 @@ describe('App', () => {
     let result = true;
     expect(subject).toEqual(result);
   });
-
 });
