@@ -27,6 +27,7 @@
 * [E2E](https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-)
 * [Docker](https://docker.io)
 * [Lighthouse](https://github.com/GoogleChrome/lighthouse)
+* [Prettier](https://github.com/prettier/prettier)
 
 ## Quick Start
 
@@ -34,6 +35,7 @@
 > If you downgrade to `protractor@4.9.x` you could run the boilerplate in Node `> 4.7.x`
 > We recommend and support [Visual Studio Code](https://code.visualstudio.com/)
 > We recommend to use [NVM](https://github.com/creationix/nvm) to manage your Node.js version and dependencies
+> We highly recommend to use
 
 ```
 # clone the repo
@@ -83,6 +85,15 @@ npm run watch:test
 
 # run your e2e tests
 npm run e2e
+```
+
+### Prettify your code
+
+> We have [Prettier](https://github.com/prettier/prettier) in place for your
+> we also recommend [Prettier for VSCode](https://github.com/prettier/prettier)
+
+```
+npm run fmt
 ```
 
 # License

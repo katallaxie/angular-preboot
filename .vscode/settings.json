@@ -1,6 +1,8 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib/",
   "tslint.exclude": "**/config/**/*.ts",
-"tslint.rulesDirectory": "./node_modules/codelyzer",
-"vsicons.presets.angular": true
+  "tslint.rulesDirectory": "./node_modules/codelyzer",
+  "editor.formatOnSave": true,
+  "vsicons.presets.angular": true,
+  "prettier.singleQuote": true
 }
