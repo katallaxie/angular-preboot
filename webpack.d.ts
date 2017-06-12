@@ -7,12 +7,14 @@ interface WebpackConfig {
   output: any;
   module?: any;
   plugins?: Array<any>;
-  performance?: boolean | {
-    hints?: string,
-    assetFilter?: string,
-    maxEntrypointSize?: string,
-    maxAssetSize?: string
-  };
+  performance?:
+    | boolean
+    | {
+        hints?: string;
+        assetFilter?: string;
+        maxEntrypointSize?: string;
+        maxAssetSize?: string;
+      };
   resolve?: {
     extensions?: Array<string>;
     modules?: Array<string>;
@@ -36,7 +38,7 @@ interface WebpackConfig {
     crypto?: boolean;
     module?: boolean;
     clearImmediate?: boolean;
-    setImmediate?: boolean
+    setImmediate?: boolean;
     clearTimeout?: boolean;
     setTimeout?: boolean;
     __dirname?: boolean;
@@ -47,7 +49,7 @@ interface WebpackConfig {
 type DefaultConfig = {
   rules: any[];
   plugins: any[];
-}
+};
 
 interface CustomConfig {
   rules: any[];
@@ -72,8 +74,11 @@ interface DefaultLoaders {
     test?: any;
     use?: any;
     exclude?: any;
-  },
-  tsLoader?: (aot: boolean) => {
+  };
+  tsLoader?: (
+    aot: boolean,
+    dev: boolean
+  ) => {
     enforce?: any;
     test: any;
     use: any;
@@ -97,4 +102,4 @@ interface DefaultLoaders {
     use?: any;
     exclude?: any;
   };
-};
+}

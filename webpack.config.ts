@@ -18,18 +18,10 @@ import { NgcWebpackPlugin } from 'ngc-webpack';
 import * as webpackMerge from 'webpack-merge';
 
 // helpers
-import {
-  isWebpackDevServer,
-  root,
-  tryDll,
-} from './config/helpers';
+import { isWebpackDevServer, root, tryDll } from './config/helpers';
 
 // dll's
-import {
-  polyfills,
-  rxjs,
-  vendor,
-} from './config/dll';
+import { polyfills, rxjs, vendor } from './config/dll';
 
 // defaults
 import {
@@ -52,12 +44,11 @@ const EVENT = process.env.npm_lifecycle_event;
 const ENV = process.env.NODE_ENV || 'development';
 
 const envConfig = {
-  isDev:  EVENT.includes('dev'),
-  isDll:  EVENT.includes('dll'),
-  isAoT:  !EVENT.includes('dev'),
-  port:   process.env.PORT ||
-    ENV === 'development' ? DevServerConfig.port : 8080,
-  host:   process.env.HOST || 'localhost'
+  isDev: EVENT.includes('dev'),
+  isDll: EVENT.includes('dll'),
+  isAoT: !EVENT.includes('dev'),
+  port: process.env.PORT || ENV === 'development' ? DevServerConfig.port : 8080,
+  host: process.env.HOST || 'localhost'
 };
 
 // is dll
@@ -72,13 +63,13 @@ const commonConfig = () => {
   config.module = {
     rules: [
       ...DefaultCommonConfig(envConfig).rules,
-      ...CustomCommonConfig.rules,
-    ],
+      ...CustomCommonConfig.rules
+    ]
   };
 
   config.plugins = [
     ...DefaultCommonConfig(envConfig).plugins,
-    ...CustomCommonConfig.plugins,
+    ...CustomCommonConfig.plugins
   ];
 
   config.node = {
@@ -90,7 +81,7 @@ const commonConfig = () => {
     module: false,
     process: true,
     setImmediate: false,
-    setTimeout: true,
+    setTimeout: true
   };
 
   return config;
@@ -103,30 +94,27 @@ const devConfig = () => {
   config.devtool = 'eval-source-map';
 
   config.module = {
-    rules: [
-      ...DefaultDevConfig(envConfig).rules,
-      ...CustomDevConfig.rules
-    ]
+    rules: [...DefaultDevConfig(envConfig).rules, ...CustomDevConfig.rules]
   };
 
   config.plugins = [
     ...DefaultDevConfig(envConfig).plugins,
-    ...CustomDevConfig.plugins,
+    ...CustomDevConfig.plugins
   ];
 
   config.resolve = {
-    modules: [root(`src`), `node_modules`],
+    modules: [root(`src`), `node_modules`]
   };
 
   config.entry = {
-    main: [].concat(polyfills(envConfig), './src/browser', rxjs()),
+    main: [].concat(polyfills(envConfig), './src/browser', rxjs())
   };
 
   config.output = {
     path: root(`public`),
     filename: '[name].bundle.js',
     sourceMapFilename: '[file].map',
-    chunkFilename: '[id].chunk.js',
+    chunkFilename: '[id].chunk.js'
   };
 
   if (isWebpackDevServer) {
@@ -145,42 +133,34 @@ const devConfig = () => {
 
 // dll
 const dllConfig = () => {
-
   const config: WebpackConfig = {} as WebpackConfig;
 
   config.entry = {
     polyfills: polyfills(envConfig.isDev),
     rxjs: rxjs(),
-    vendor: vendor(),
+    vendor: vendor()
   };
 
   config.output = {
     path: root(`dll`),
     filename: '[name].dll.js',
     sourceMapFilename: '[name].dll.map',
-    library: '__[name]',
+    library: '__[name]'
   };
 
-  config.plugins = [
-    ...DefaultDllConfig().plugins
-  ];
+  config.plugins = [...DefaultDllConfig().plugins];
 
   return config;
-
 };
 
 // prod
 const prodConfig = () => {
-
   const config: WebpackConfig = {} as WebpackConfig;
 
   config.devtool = 'source-map';
 
   config.module = {
-    rules: [
-      ...DefaultProdConfig(envConfig).rules,
-      ...CustomProdConfig.rules
-    ]
+    rules: [...DefaultProdConfig(envConfig).rules, ...CustomProdConfig.rules]
   };
 
   config.performance = {
@@ -190,19 +170,19 @@ const prodConfig = () => {
   config.entry = {
     main: './src/browser.aot',
     polyfills: polyfills(envConfig),
-    rxjs: rxjs(),
+    rxjs: rxjs()
   };
 
   config.output = {
     path: root(`public`),
     filename: '[name].[chunkhash].bundle.js',
     sourceMapFilename: '[name].[chunkhash].bundle.map',
-    chunkFilename: '[id].[chunkhash].chunk.js',
+    chunkFilename: '[id].[chunkhash].chunk.js'
   };
 
   config.plugins = [
     ...DefaultProdConfig(envConfig).plugins,
-    ...CustomProdConfig.plugins,
+    ...CustomProdConfig.plugins
   ];
 
   if (envConfig.isAoT) {
@@ -211,7 +191,8 @@ const prodConfig = () => {
         disabled: !envConfig.isAoT,
         tsConfig: root('tsconfig.es2015.json'),
         resourceOverride: ''
-      }));
+      })
+    );
   }
 
   return config;
@@ -222,7 +203,7 @@ const defaultConfig = () => {
   const config: WebpackConfig = {} as WebpackConfig;
 
   config.resolve = {
-    extensions: ['.ts', '.js', '.json'],
+    extensions: ['.ts', '.js', '.json']
   };
 
   return config;
@@ -232,7 +213,12 @@ const defaultConfig = () => {
 switch (ENV) {
   case 'prod':
   case 'production':
-    module.exports = webpackMerge({}, defaultConfig(), prodConfig(), commonConfig());
+    module.exports = webpackMerge(
+      {},
+      defaultConfig(),
+      prodConfig(),
+      commonConfig()
+    );
     break;
   case 'dev':
   case 'development':

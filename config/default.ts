@@ -5,7 +5,7 @@ import {
   ContextReplacementPlugin,
   DefinePlugin,
   DllReferencePlugin,
-  ProgressPlugin,
+  ProgressPlugin
 } from 'webpack';
 import { CheckerPlugin } from 'awesome-typescript-loader';
 import { HtmlHeadElementsPlugin } from 'html-head-webpack-plugin';
@@ -26,44 +26,44 @@ import * as UglifyJsPlugin from 'webpack/lib/optimize/UglifyJsPlugin';
 import * as Autoprefixer from 'autoprefixer';
 import * as CssNano from 'cssnano';
 
-import {
-  CustomHeadTags,
-  CustomCopyFolders,
-} from './custom';
+import { CustomHeadTags, CustomCopyFolders } from './custom';
 
 export const DefaultCopyFolders = [
   { from: 'src/static', ignore: ['favicon.ico'] },
   { from: 'src/static/icon/favicon.ico' },
-  { from: 'src/meta' },
+  { from: 'src/meta' }
 ];
 
 // sourcemaps
 export const ExcludeSourceMaps = [
   // these packages have problems with their sourcemaps
   root('node_modules/@angular'),
-  root('node_modules/rxjs'),
+  root('node_modules/rxjs')
 ];
 
 export const loader: DefaultLoaders = {
   tsLintLoader: {
     enforce: 'pre',
     test: /\.ts$/,
-    use: [{
-      loader: 'tslint-loader',
-      options: {
-        typeCheck: true
+    use: [
+      {
+        loader: 'tslint-loader',
+        options: {
+          typeCheck: true
+        }
       }
-    }]
+    ]
   },
   sourceMapLoader: {
     test: /\.js$/,
     use: 'source-map-loader',
     exclude: [ExcludeSourceMaps]
   },
-  tsLoader: (aot = false) => ({
+  tsLoader: (aot = false, dev) => ({
     test: /\.ts$/,
     use: [
-      { //
+      {
+        //
         loader: 'ng-router-loader',
         options: {
           loader: 'async-system',
@@ -74,12 +74,13 @@ export const loader: DefaultLoaders = {
       {
         loader: 'awesome-typescript-loader',
         options: {
-          configFileName: 'tsconfig.es2015.json'
+          configFileName: 'tsconfig.es2015.json',
+          useCache: !dev
         }
       },
-      'angular2-template-loader',
+      'angular2-template-loader'
     ],
-    exclude: [/\.(spec|e2e)\.ts$/],
+    exclude: [/\.(spec|e2e)\.ts$/]
   }),
   cssLoader: {
     test: /\.css$/,
@@ -89,31 +90,25 @@ export const loader: DefaultLoaders = {
       {
         loader: 'postcss-loader',
         options: {
-          plugins: () => [
-            Autoprefixer(),
-            CssNano(),
-          ]
+          plugins: () => [Autoprefixer(), CssNano()]
         }
       }
-    ],
-  }, htmlLoader: {
+    ]
+  },
+  htmlLoader: {
     test: /\.html$/,
     use: 'raw-loader',
-    exclude: [root('src/index.html')],
+    exclude: [root('src/index.html')]
   },
   fileLoader: {
     test: /\.(jpg|png|gif)$/,
-    use: 'file-loader',
+    use: 'file-loader'
   }
 };
 
 export const DefaultCommonConfig = ({ isDev }): DefaultConfig => {
   return {
-    rules: [
-      loader.cssLoader,
-      loader.htmlLoader,
-      loader.fileLoader,
-    ],
+    rules: [loader.cssLoader, loader.htmlLoader, loader.fileLoader],
     plugins: [
       new ProgressPlugin(),
       new CheckerPlugin(),
@@ -129,25 +124,22 @@ export const DefaultCommonConfig = ({ isDev }): DefaultConfig => {
       new HtmlHeadElementsPlugin({
         link: CustomHeadTags.link,
         meta: CustomHeadTags.meta
-      }),
+      })
     ]
-  }
+  };
 };
 
-export const DefaultDevConfig = ({ isAoT }): DefaultConfig => {
+export const DefaultDevConfig = ({ isAoT, isDev }): DefaultConfig => {
   return {
-    rules: [
-      loader.tsLintLoader,
-      loader.tsLoader(isAoT),
-    ],
+    rules: [loader.tsLintLoader, loader.tsLoader(isAoT, isDev)],
     plugins: [
       new DllReferencePlugin({
         context: '.',
-        manifest: require('../dll/polyfills-manifest.json'),
+        manifest: require('../dll/polyfills-manifest.json')
       }),
       new DllReferencePlugin({
         context: '.',
-        manifest: require('../dll/vendor-manifest.json'),
+        manifest: require('../dll/vendor-manifest.json')
       }),
       new HtmlWebpackPlugin({
         inject: 'head',
@@ -162,47 +154,42 @@ export const DefaultDevConfig = ({ isAoT }): DefaultConfig => {
       ]),
       new ScriptExtHtmlWebpackPlugin({
         defaultAttribute: 'defer'
-      }),
+      })
     ]
-  }
+  };
 };
 
-export const DefaultProdConfig = ({ isAoT }): DefaultConfig => {
+export const DefaultProdConfig = ({ isAoT, isDev }): DefaultConfig => {
   return {
-    rules: [
-      loader.tsLoader(isAoT),
-    ],
+    rules: [loader.tsLoader(isAoT, isDev)],
     plugins: [
       new OptimizeJsPlugin({
         sourceMap: false
       }),
       new BrotliPlugin({
         asset: '[path].br[query]',
-			  test: /\.(js|css|html|svg)$/,
-			  threshold: 10240,
-			  minRatio: 0.8
+        test: /\.(js|css|html|svg)$/,
+        threshold: 10240,
+        minRatio: 0.8
       }),
       // new NoEmitOnErrorsPlugin(), // quality
       // This enables tree shaking of the vendor modules
       new CommonsChunkPlugin({
         name: 'vendor',
         chunks: ['main'],
-        minChunks: (module) => /node_modules/.test(module.resource)
+        minChunks: module => /node_modules/.test(module.resource)
       }),
       new CommonsChunkPlugin({
-        name: ['polyfills', 'vendor', 'rxjs'].reverse(),
+        name: ['polyfills', 'vendor', 'rxjs'].reverse()
       }),
       new CompressionPlugin({
         asset: '[path].gz[query]',
         algorithm: 'gzip',
         test: /\.js$|\.html$/,
         threshold: 2 * 1024,
-        minRatio: 0.8,
+        minRatio: 0.8
       }),
-      new CopyWebpackPlugin([
-        ...DefaultCopyFolders,
-        ...CustomCopyFolders
-      ]),
+      new CopyWebpackPlugin([...DefaultCopyFolders, ...CustomCopyFolders]),
       new HtmlWebpackPlugin({
         inject: 'head',
         template: 'src/index.html',
@@ -238,9 +225,9 @@ export const DefaultProdConfig = ({ isAoT }): DefaultConfig => {
         mangle: {
           screw_ie8: true
         }
-      }),
+      })
     ]
-  }
+  };
 };
 
 export const DefaultDllConfig = (): DefaultConfig => {
@@ -249,8 +236,8 @@ export const DefaultDllConfig = (): DefaultConfig => {
     plugins: [
       new DllPlugin({
         name: '__[name]',
-        path: root('dll/[name]-manifest.json'),
-      }),
+        path: root('dll/[name]-manifest.json')
+      })
     ]
-  }
-}
+  };
+};
