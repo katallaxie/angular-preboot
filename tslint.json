@@ -1,6 +1,7 @@
 {
   "extends": [
-    "tslint:recommended"
+    "tslint:recommended",
+    "tslint-config-prettier"
   ],
   "rulesDirectory": [
     "node_modules/codelyzer"
@@ -26,7 +27,10 @@
     "use-pipe-transform-interface": true,
     // Custom
     "interface-name": [false, "always-prefix"],
-    "trailing-comma": [false, {"multiline": "always", "singleline": "never"}],
+    "trailing-comma": [false, {
+      "multiline": "always",
+      "singleline": "never"
+    }],
     // General
     "no-console": [true,
       "time",
