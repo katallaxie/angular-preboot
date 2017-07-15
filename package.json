@@ -100,7 +100,7 @@
     "brotli-webpack-plugin": "^0.3.0",
     "clang-format": "^1.0.50",
     "codelyzer": "^3.1.1",
-    "compression-webpack-plugin": "^0.4.0",
+    "compression-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.1",
     "cross-spawn": "^5.0.1",
