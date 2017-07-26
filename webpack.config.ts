@@ -136,7 +136,7 @@ const dllConfig = () => {
   const config: WebpackConfig = {} as WebpackConfig;
 
   config.entry = {
-    polyfills: polyfills(envConfig.isDev),
+    polyfills: polyfills(envConfig),
     rxjs: rxjs(),
     vendor: vendor()
   };
