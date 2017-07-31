@@ -4,8 +4,7 @@
  * These are the libraries that should be resolved for the different environments
  *
  */
-export function polyfills({isDev}) {
-
+export function polyfills(isDev) {
   const common = [
     // 'ie-shim'
 
@@ -33,9 +32,7 @@ export function polyfills({isDev}) {
     'zone.js/dist/zone'
   ];
 
-  const dev = [
-    'zone.js/dist/long-stack-trace-zone',
-  ];
+  const dev = ['zone.js/dist/long-stack-trace-zone'];
 
   return !isDev ? common : common.concat(dev);
 }

@@ -18,16 +18,12 @@ import { NgcWebpackPlugin } from 'ngc-webpack';
 import * as webpackMerge from 'webpack-merge';
 
 // helpers
-import { isWebpackDevServer, root, tryDll } from './config/helpers';
-
-// dll's
-import { polyfills, rxjs, vendor } from './config/dll';
+import { isWebpackDevServer, root } from './config/helpers';
 
 // defaults
 import {
   DefaultCommonConfig,
   DefaultDevConfig,
-  DefaultDllConfig,
   DefaultProdConfig
 } from './config/default';
 
@@ -43,18 +39,15 @@ import {
 const EVENT = process.env.npm_lifecycle_event;
 const ENV = process.env.NODE_ENV || 'development';
 
+// dll's
+import { polyfills, rxjs } from './config/dll';
+
 const envConfig = {
   isDev: EVENT.includes('dev'),
-  isDll: EVENT.includes('dll'),
   isAoT: !EVENT.includes('dev'),
   port: process.env.PORT || ENV === 'development' ? DevServerConfig.port : 8080,
   host: process.env.HOST || 'localhost'
 };
-
-// is dll
-if (!envConfig.isDll && envConfig.isDev) {
-  tryDll(['polyfills', 'vendor', 'rxjs']);
-}
 
 // common
 const commonConfig = () => {
@@ -107,7 +100,7 @@ const devConfig = () => {
   };
 
   config.entry = {
-    main: [].concat(polyfills(envConfig), './src/browser', rxjs())
+    main: [].concat(polyfills(envConfig.isDev), './src/browser', rxjs())
   };
 
   config.output = {
@@ -127,28 +120,6 @@ const devConfig = () => {
       ...DevServerConfig.options
     };
   }
-
-  return config;
-};
-
-// dll
-const dllConfig = () => {
-  const config: WebpackConfig = {} as WebpackConfig;
-
-  config.entry = {
-    polyfills: polyfills(envConfig),
-    rxjs: rxjs(),
-    vendor: vendor()
-  };
-
-  config.output = {
-    path: root(`dll`),
-    filename: '[name].dll.js',
-    sourceMapFilename: '[name].dll.map',
-    library: '__[name]'
-  };
-
-  config.plugins = [...DefaultDllConfig().plugins];
 
   return config;
 };
@@ -223,7 +194,10 @@ switch (ENV) {
   case 'dev':
   case 'development':
   default:
-    module.exports = envConfig.isDll
-      ? webpackMerge({}, defaultConfig(), commonConfig(), dllConfig())
-      : webpackMerge({}, defaultConfig(), commonConfig(), devConfig());
+    module.exports = webpackMerge(
+      {},
+      defaultConfig(),
+      commonConfig(),
+      devConfig()
+    );
 }

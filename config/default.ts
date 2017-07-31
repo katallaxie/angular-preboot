@@ -1,15 +1,14 @@
 /*** DO NOT TOUCH ***/
 import { root } from './helpers';
 import {
-  DllPlugin,
   ContextReplacementPlugin,
   DefinePlugin,
-  DllReferencePlugin,
   ProgressPlugin
 } from 'webpack';
 import { CheckerPlugin } from 'awesome-typescript-loader';
 import { HtmlHeadElementsPlugin } from 'html-head-webpack-plugin';
 import { TsConfigPathsPlugin } from 'awesome-typescript-loader';
+import * as AutoDllPlugin from 'autodll-webpack-plugin';
 import * as CopyWebpackPlugin from 'copy-webpack-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
@@ -28,11 +27,15 @@ import * as CssNano from 'cssnano';
 
 import { CustomHeadTags, CustomCopyFolders } from './custom';
 
+// copy
 export const DefaultCopyFolders = [
   { from: 'src/static', ignore: ['favicon.ico'] },
   { from: 'src/static/icon/favicon.ico' },
   { from: 'src/meta' }
 ];
+
+// dll's
+import { polyfills, rxjs, vendor } from './dll';
 
 // sourcemaps
 export const ExcludeSourceMaps = [
@@ -133,13 +136,16 @@ export const DefaultDevConfig = ({ isAoT, isDev }): DefaultConfig => {
   return {
     rules: [loader.tsLintLoader, loader.tsLoader(isAoT, isDev)],
     plugins: [
-      new DllReferencePlugin({
-        context: '.',
-        manifest: require('../dll/polyfills-manifest.json')
-      }),
-      new DllReferencePlugin({
-        context: '.',
-        manifest: require('../dll/vendor-manifest.json')
+      new AutoDllPlugin({
+        context: root(),
+        debug: true,
+        inject: false, // will inject the DLL bundles to index.html
+        filename: '[name].dll.js',
+        entry: {
+          polyfills: polyfills(isDev),
+          rxjs: rxjs(),
+          vendor: vendor()
+        }
       }),
       new HtmlWebpackPlugin({
         inject: 'head',
@@ -147,11 +153,7 @@ export const DefaultDevConfig = ({ isAoT, isDev }): DefaultConfig => {
         title: CustomHeadTags.title
       }),
       new NamedModulesPlugin(),
-      new CopyWebpackPlugin([
-        ...DefaultCopyFolders,
-        ...CustomCopyFolders,
-        { from: 'dll', ignore: ['*.json'] }
-      ]),
+      new CopyWebpackPlugin([...DefaultCopyFolders, ...CustomCopyFolders]),
       new ScriptExtHtmlWebpackPlugin({
         defaultAttribute: 'defer'
       })
@@ -192,7 +194,7 @@ export const DefaultProdConfig = ({ isAoT, isDev }): DefaultConfig => {
       new CopyWebpackPlugin([...DefaultCopyFolders, ...CustomCopyFolders]),
       new HtmlWebpackPlugin({
         inject: 'head',
-        template: 'src/index.html',
+        template: './src/index.html',
         title: CustomHeadTags.title,
         minify: {
           minifyJS: true,
@@ -225,18 +227,6 @@ export const DefaultProdConfig = ({ isAoT, isDev }): DefaultConfig => {
         mangle: {
           screw_ie8: true
         }
-      })
-    ]
-  };
-};
-
-export const DefaultDllConfig = (): DefaultConfig => {
-  return {
-    rules: [],
-    plugins: [
-      new DllPlugin({
-        name: '__[name]',
-        path: root('dll/[name]-manifest.json')
       })
     ]
   };
