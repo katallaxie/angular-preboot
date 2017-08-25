@@ -39,7 +39,11 @@ export const CustomDevConfig: CustomConfig = {
 // production
 export const CustomProdConfig: CustomConfig = {
   plugins: [
-    new OfflinePlugin()
+    new OfflinePlugin({
+      ServiceWorker: {
+        events: true
+      }
+    })
   ],
   rules: [
 
