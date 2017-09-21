@@ -17,7 +17,7 @@
     "build:prod":
       "cross-env NODE_ENV=production webpack --progress --profile --bail --debug",
     "build": "npm run build:dev",
-    "ci": "npm test --runInBand && npm run e2e",
+    "ci": "npm test --runInBand && npm run e2e && bundlesize",
     "clean:aot": "npm run rimraf -- aot",
     "clean:public": "npm run rimraf -- public",
     "clean:dll": "rimraf -- dll",
@@ -53,9 +53,10 @@
     "server:prod": "http-server public -c-1 --cors",
     "server": "npm run server:dev",
     "start": "npm run server:dev",
-    "test": "cross-env NODE_ENV=testing npm run lint && jest && bundlesize",
+    "test": "cross-env NODE_ENV=testing npm run lint && jest",
     "test:pwa": "npm-run-all -p -r server:prod lighthouse",
     "test:watch": "jest --watch",
+    "test:bundlesize": "npm run bundlesize",
     "tslint":
       "node_modules/tslint/bin/tslint --type-check --project tsconfig.json -e 'src/**/*.spec.ts' -e 'src/**/*.e2e.ts' 'src/**/*.ts'",
     "typedoc": "typedoc",

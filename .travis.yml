@@ -17,10 +17,8 @@ before_install:
   - sh -e /etc/init.d/xvfb start
   - sleep 3
 script:
-  - npm test
-  - npm run build:dev
   - npm run build:prod
-  - npm run e2e
+  - npm run ci
 cache:
   directories:
     - node_modules
