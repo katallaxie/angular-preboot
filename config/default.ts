@@ -143,8 +143,8 @@ export const DefaultDevConfig = ({ isAoT, isDev }): DefaultConfig => {
         filename: '[name].dll.js',
         entry: {
           polyfills: polyfills(isDev),
-          rxjs: rxjs(),
-          vendor: vendor()
+          vendor: vendor(),
+          rxjs: rxjs()
         }
       }),
       new HtmlWebpackPlugin({
