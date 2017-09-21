@@ -1,12 +1,9 @@
 {
   "name": "angular-preboot",
   "version": "4.3.6",
-  "description": "A teeny tiny Angular template to get your next great project booted. It is powered by great ideas and Webpack 2.",
-  "keywords": [
-    "angular",
-    "webpack",
-    "typescript"
-  ],
+  "description":
+    "A teeny tiny Angular template to get your next great project booted. It is powered by great ideas and Webpack 2.",
+  "keywords": ["angular", "webpack", "typescript"],
   "author": {
     "name": "Sebastian Döll",
     "email": "sebastian@katallaxie.me"
@@ -15,8 +12,10 @@
   "license": "MIT",
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --progress --profile",
-    "build:docker": "npm run build:prod && docker build -t angular2-preboot:latest .",
-    "build:prod": "cross-env NODE_ENV=production webpack --progress --profile --bail --debug",
+    "build:docker":
+      "npm run build:prod && docker build -t angular2-preboot:latest .",
+    "build:prod":
+      "cross-env NODE_ENV=production webpack --progress --profile --bail --debug",
     "build": "npm run build:dev",
     "ci": "npm test --runInBand && npm run e2e",
     "clean:aot": "npm run rimraf -- aot",
@@ -24,17 +23,20 @@
     "clean:dll": "rimraf -- dll",
     "clean:install": "npm set progress=false && npm install",
     "clean:start": "npm run clean:dll && npm run clean:public && start",
-    "clean": "npm cache clean --force && npm run rimraf -- doc coverage public aot dll node_modules",
+    "clean":
+      "npm cache clean --force && npm run rimraf -- doc coverage public aot dll node_modules",
     "cross-env": "cross-env",
     "dev": "cross-env NODE_ENV=development",
     "dll": "cross-env NODE_ENV=development webpack --progress --profile",
     "docker": "docker",
-    "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/",
+    "docs":
+      "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/",
     "e2e": "npm-run-all -p -r server:ci protractor",
     "help": "node node_modules/npm-scripts-help",
     "fmt": "prettier --write --single-quote src/**/*.ts; exit 0",
     "lint": "npm run tslint",
-    "lighthouse": "lighthouse http://127.0.0.1:8080 --view --output-path ./lighthouse.html",
+    "lighthouse":
+      "lighthouse http://127.0.0.1:8080 --view --output-path ./lighthouse.html",
     "postversion": "git push && git push --tags",
     "prebuild:dev": "npm run clean:public",
     "prebuild:prod": "npm run clean:public && npm run clean:aot",
@@ -46,14 +48,16 @@
     "protractor": "protractor",
     "rimraf": "rimraf",
     "server:ci": "http-server public -p 3000 -c-1 --cors",
-    "server:dev": "cross-env NODE_ENV=development npm run webpack-dev-server --open --progress --profile --watch",
+    "server:dev":
+      "cross-env NODE_ENV=development npm run webpack-dev-server --open --progress --profile --watch",
     "server:prod": "http-server public -c-1 --cors",
     "server": "npm run server:dev",
     "start": "npm run server:dev",
-    "test": "cross-env NODE_ENV=testing npm run lint && jest",
+    "test": "cross-env NODE_ENV=testing npm run lint && jest && bundlesize",
     "test:pwa": "npm-run-all -p -r server:prod lighthouse",
     "test:watch": "jest --watch",
-    "tslint": "node_modules/tslint/bin/tslint --type-check --project tsconfig.json -e 'src/**/*.spec.ts' -e 'src/**/*.e2e.ts' 'src/**/*.ts'",
+    "tslint":
+      "node_modules/tslint/bin/tslint --type-check --project tsconfig.json -e 'src/**/*.spec.ts' -e 'src/**/*.e2e.ts' 'src/**/*.ts'",
     "typedoc": "typedoc",
     "version": "npm run build",
     "watch:dev": "npm run build:dev -- --watch",
@@ -99,6 +103,7 @@
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
     "brotli-webpack-plugin": "^0.4.1",
+    "bundlesize": "^0.14.4",
     "codelyzer": "^3.1.2",
     "compression-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.0.1",
@@ -108,7 +113,7 @@
     "cssnano": "^3.10.0",
     "exports-loader": "^0.6.3",
     "expose-loader": "^0.7.3",
-    "file-loader": "^1.0.0",
+    "file-loader": "^0.11.2",
     "html-elements-webpack-plugin": "^1.0.1",
     "html-loader": "^0.5.0",
     "html-webpack-plugin": "^2.29.0",
@@ -148,16 +153,27 @@
     "url-loader": "^0.5.7",
     "webpack": "3.6.0",
     "webpack-dev-middleware": "^1.11.0",
-    "webpack-dev-server": "2.8.0",
+    "webpack-dev-server": "2.8.2",
     "webpack-merge": "^4.1.0"
   },
+  "bundlesize": [
+    {
+      "path": "./public/vendor.*.js",
+      "maxSize": "400 kB"
+    },
+    {
+      "path": "./public/polyfills.*.js",
+      "maxSize": "120 kB"
+    }
+  ],
   "jest": {
     "globals": {
       "ts-jest": "tsconfig.json"
     },
     "preset": "jest-preset-angular",
     "transform": {
-      "^.+\\.(ts|js)$": "<rootDir>/node_modules/jest-preset-angular/preprocessor.js",
+      "^.+\\.(ts|js)$":
+        "<rootDir>/node_modules/jest-preset-angular/preprocessor.js",
       "^.+\\.html$": "<rootDir>/utils/htmlLoader.ts"
     },
     "setupTestFrameworkScriptFile": "<rootDir>/config/jestSetup.ts"
