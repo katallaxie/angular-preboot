@@ -1,6 +1,5 @@
 import { ApplicationRef, enableProdMode } from '@angular/core';
 import { disableDebugTools, enableDebugTools } from '@angular/platform-browser';
-import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 
 // Angular debug tools in the dev console
 // https://github.com/angular/angular/blob/master/TOOLS.md
@@ -8,27 +7,6 @@ export let decorateModuleRef = <T>(value: T): T => value;
 
 if (__PROD__) {
   enableProdMode();
-
-  // ofline
-  OfflinePluginRuntime.install({
-    onUpdating: () => {
-      console.log('SW Event:', 'onUpdating');
-    },
-    onUpdateReady: () => {
-      console.log('SW Event:', 'onUpdateReady');
-      // Tells to new SW to take control immediately
-      OfflinePluginRuntime.applyUpdate();
-    },
-    onUpdated: () => {
-      console.log('SW Event:', 'onUpdated');
-      // Reload the webpage to load into the new version
-      window.location.reload();
-    },
-
-    onUpdateFailed: () => {
-      console.log('SW Event:', 'onUpdateFailed');
-    }
-  });
 
   // enable production
   decorateModuleRef = (modRef: any) => {

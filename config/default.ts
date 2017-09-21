@@ -6,7 +6,7 @@ import {
   ProgressPlugin
 } from 'webpack';
 import { CheckerPlugin } from 'awesome-typescript-loader';
-import { HtmlHeadElementsPlugin } from 'html-head-webpack-plugin';
+import * as HtmlElementsWebpackPlugin from 'html-elements-webpack-plugin';
 import { TsConfigPathsPlugin } from 'awesome-typescript-loader';
 import * as AutoDllPlugin from 'autodll-webpack-plugin';
 import * as CopyWebpackPlugin from 'copy-webpack-plugin';
@@ -35,7 +35,7 @@ export const DefaultCopyFolders = [
 ];
 
 // dll's
-import { polyfills, rxjs, vendor } from './dll';
+import { polyfills, vendor } from './dll';
 
 // sourcemaps
 export const ExcludeSourceMaps = [
@@ -124,9 +124,8 @@ export const DefaultCommonConfig = ({ isDev }): DefaultConfig => {
         /angular(\\|\/)core(\\|\/)@angular/,
         root(`src`)
       ),
-      new HtmlHeadElementsPlugin({
-        link: CustomHeadTags.link,
-        meta: CustomHeadTags.meta
+      new HtmlElementsWebpackPlugin({
+        headTags: Object.assign({}, { link: CustomHeadTags.link, meta: CustomHeadTags.meta })
       })
     ]
   };
@@ -143,7 +142,6 @@ export const DefaultDevConfig = ({ isAoT, isDev }): DefaultConfig => {
         filename: '[name].dll.js',
         entry: {
           polyfills: polyfills(isDev),
-          rxjs: rxjs(),
           vendor: vendor()
         }
       }),
@@ -182,7 +180,7 @@ export const DefaultProdConfig = ({ isAoT, isDev }): DefaultConfig => {
         minChunks: module => /node_modules/.test(module.resource)
       }),
       new CommonsChunkPlugin({
-        name: ['polyfills', 'vendor', 'rxjs'].reverse()
+        name: ['polyfills', 'vendor'].reverse()
       }),
       new CompressionPlugin({
         asset: '[path].gz[query]',

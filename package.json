@@ -109,7 +109,7 @@
     "exports-loader": "^0.6.3",
     "expose-loader": "^0.7.3",
     "file-loader": "^1.0.0",
-    "html-head-webpack-plugin": "^0.1.4",
+    "html-elements-webpack-plugin": "^1.0.1",
     "html-loader": "^0.5.0",
     "html-webpack-plugin": "^2.29.0",
     "http-server": "^0.10.0",

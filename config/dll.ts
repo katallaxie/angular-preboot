@@ -49,13 +49,9 @@ export function vendor() {
     '@angular/http',
 
     // import in bootstrap file
-    'hammerjs'
-  ];
-}
+    'hammerjs',
 
-// RxJS
-export function rxjs() {
-  return [
+    // RxJS
     'rxjs/Observable',
     'rxjs/Subscription',
     'rxjs/Subject',

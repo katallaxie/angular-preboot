@@ -40,7 +40,7 @@ const EVENT = process.env.npm_lifecycle_event;
 const ENV = process.env.NODE_ENV || 'development';
 
 // dll's
-import { polyfills, rxjs } from './config/dll';
+import { polyfills } from './config/dll';
 
 const envConfig = {
   isDev: EVENT.includes('dev'),
@@ -100,7 +100,7 @@ const devConfig = () => {
   };
 
   config.entry = {
-    main: [].concat(polyfills(envConfig.isDev), './src/browser', rxjs())
+    main: [].concat(polyfills(envConfig.isDev), './src/browser')
   };
 
   config.output = {
@@ -140,8 +140,7 @@ const prodConfig = () => {
 
   config.entry = {
     main: './src/browser.aot',
-    polyfills: polyfills(envConfig),
-    rxjs: rxjs()
+    polyfills: polyfills(envConfig)
   };
 
   config.output = {

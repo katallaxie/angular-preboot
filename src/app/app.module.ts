@@ -1,7 +1,8 @@
-import { ApplicationRef, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 /*
@@ -25,11 +26,11 @@ const APP_PROVIDERS = [];
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(APP_ROUTES, { useHash: true, enableTracing: __DEV__ })
   ],
   providers: [APP_PROVIDERS]
 })
 export class AppModule {
-  constructor(public appRef: ApplicationRef) {}
+  constructor(public appRef: ApplicationRef) { }
 }
