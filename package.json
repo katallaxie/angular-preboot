@@ -91,7 +91,7 @@
     "@angular/compiler": "^4.3.6",
     "@angular/compiler-cli": "^4.3.6",
     "@types/hammerjs": "^2.0.33",
-    "@types/jest": "^20.0.8",
+    "@types/jest": "^21.1.0",
     "@types/node": "^8.0.28",
     "@types/selenium-webdriver": "^3.0.6",
     "@types/source-map": "^0.5.0",
