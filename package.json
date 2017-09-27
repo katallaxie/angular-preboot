@@ -150,7 +150,7 @@
     "tslint-config-prettier": "^1.5.0",
     "tslint-loader": "^3.5.1",
     "typedoc": "^0.8.0",
-    "typescript": "2.5.2",
+    "typescript": "2.5.3",
     "url-loader": "^0.5.7",
     "webpack": "3.6.0",
     "webpack-dev-middleware": "^1.11.0",
