@@ -128,7 +128,7 @@ const devConfig = () => {
 const prodConfig = () => {
   const config: WebpackConfig = {} as WebpackConfig;
 
-  config.devtool = 'source-map';
+  config.devtool = false;
 
   config.module = {
     rules: [...DefaultProdConfig(envConfig).rules, ...CustomProdConfig.rules]
