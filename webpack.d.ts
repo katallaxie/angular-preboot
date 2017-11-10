@@ -1,7 +1,7 @@
 interface WebpackConfig {
   cache?: boolean;
   target?: string;
-  devtool?: string;
+  devtool?: string | boolean;
   entry: any;
   externals?: any;
   output: any;
