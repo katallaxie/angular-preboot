@@ -68,7 +68,7 @@
     "webpack": "webpack"
   },
   "dependencies": {
-    "@angular/animations": "^4.4.4",
+    "@angular/animations": "^5.0.4",
     "@angular/common": "^4.4.4",
     "@angular/core": "^4.4.4",
     "@angular/forms": "^4.4.4",
