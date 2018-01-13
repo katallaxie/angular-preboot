@@ -126,7 +126,7 @@
     "npm-scripts-help": "^0.7.0",
     "offline-plugin": "^4.8.3",
     "optimize-js-plugin": "0.0.4",
-    "parse5": "^3.0.1",
+    "parse5": "^4.0.0",
     "postcss": "^6.0.11",
     "postcss-loader": "^2.0.2",
     "preload-webpack-plugin": "^2.0.0",
