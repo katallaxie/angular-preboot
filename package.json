@@ -100,7 +100,7 @@
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
     "brotli-webpack-plugin": "^0.4.1",
-    "bundlesize": "^0.15.3",
+    "bundlesize": "^0.17.2",
     "codelyzer": "^3.1.2",
     "compression-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.0.1",
