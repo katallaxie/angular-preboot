@@ -110,7 +110,7 @@
     "cssnano": "^3.10.0",
     "exports-loader": "^0.6.3",
     "expose-loader": "^0.7.3",
-    "file-loader": "^1.1.0",
+    "file-loader": "^4.1.0",
     "html-elements-webpack-plugin": "^1.0.1",
     "html-loader": "^0.5.0",
     "html-webpack-plugin": "^2.29.0",
